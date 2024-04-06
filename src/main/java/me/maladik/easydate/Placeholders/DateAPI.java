@@ -82,7 +82,7 @@ public class DateAPI extends PlaceholderExpansion {
 
         }
 
-        if (identifier.equals("day")) {
+        if (identifier.equals("day_number")) {
             return "" + Utils.DAY;
         }
 

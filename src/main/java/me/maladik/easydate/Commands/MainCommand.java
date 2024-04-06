@@ -30,6 +30,11 @@ public class MainCommand implements CommandExecutor {
                         int year = Integer.parseInt(args[3]);
                         int dayName = Integer.parseInt(args[4]);
 
+                        if ((day > 31 && day < 0) || (month > 12 && month < 0) || (dayName > 6 && dayName < 0)) {
+                            p.sendMessage("§aThe numbers you inserted are not correct! Please check and try again.");
+                            return true;
+                        }
+
                         Utils.DAY = day;
                         Utils.MONTH = month;
                         Utils.YEAR = year;
@@ -59,14 +64,18 @@ public class MainCommand implements CommandExecutor {
                         p.sendMessage("§cCommand syntax: §f/easydate set <day> <month> <year> [<day name>]");
                         return true;
                     }
-                }
-                if (args[0].equalsIgnoreCase("currentdate")) {
-                    p.sendMessage("\n\n§aCurrent date:" + "\n§7 US Format: §f" + Utils.MONTH + "/" + Utils.DAY + "/" + Utils.YEAR + "\n§7 EU/IT Format: §f" + Utils.DAY + "/" + Utils.YEAR + "/" + Utils.YEAR + "\n");
+                } else if (args[0].equalsIgnoreCase("currentdate")) {
+                    p.sendMessage("\n\n§aCurrent date:" + "\n§7 US Format: §f" + Utils.MONTH + "/" + Utils.DAY + "/" + Utils.YEAR + "\n§7 EU/IT Format: §f" + Utils.DAY + "/" + Utils.MONTH + "/" + Utils.YEAR + "\n ");
                     return true;
-                }
-                if (args[0].equalsIgnoreCase("configreload")) {
+                } else if (args[0].equalsIgnoreCase("configreload")) {
                     EasyDate.getInstance().reloadConfig();
                     p.sendMessage("§aConfig reloaded successfully!");
+                    return true;
+                } else if (args[0].equalsIgnoreCase("help")) {
+                    p.sendMessage(Utils.HELP_MESSAGE);
+                    return true;
+                } else {
+                    p.sendMessage("§cIncorrect command! Digit /easydate help for help!");
                     return true;
                 }
             }
