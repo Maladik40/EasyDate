@@ -1,0 +1,16 @@
+name: EasyDate
+version: '${project.version}'
+main: me.maladik.easydate.EasyDate
+api-version: 1.19
+description: Adds configurable automatic date in Minecraft! [REQUIRES PLACEHOLDERAPI!]
+commands:
+  ticks:
+    permission: easydate.debug.use
+  date:
+    permission: easydate.debug.use
+  setdate:
+    permission: easydate.debug.use
+  easydate:
+    permission: easydate.debug.use
+depend:
+  - PlaceholderAPI

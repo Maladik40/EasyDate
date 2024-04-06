@@ -1,0 +1,12 @@
+world-date: 'world'
+# LANGUAGES AVAILABLE:
+#
+# ITALIANO - it_it
+# ENGLISH (USA/UK) - en_us
+#
+last-date:
+  day: 1
+  month: 1
+  year: 1
+  day-name: 0
+
