@@ -43,6 +43,24 @@ public class DateAPI extends PlaceholderExpansion {
         LanguageFile langFile = myPlugin.getLangFile();
         FileConfiguration langYaml = langFile.getConfiguration();
 
+        // NAMES
+
+        List<String> itMonths = new ArrayList<>();
+
+        itMonths.addAll(langYaml.getStringList("it_it.months-names"));
+
+        List<String> itDays = new ArrayList<>();
+
+        itDays.addAll(langYaml.getStringList("it_it.days-names"));
+
+        List<String> enMonths = new ArrayList<>();
+
+        enMonths.addAll(langYaml.getStringList("en_us.months-names"));
+
+        List<String> enDays = new ArrayList<>();
+
+        enDays.addAll(langYaml.getStringList("en_us.days-names"));
+
         if (identifier.equals("eu_formatted_date")) {
             return Utils.DAY + "/" + Utils.MONTH + "/" + Utils.YEAR;
         }
@@ -53,31 +71,43 @@ public class DateAPI extends PlaceholderExpansion {
 
         if (identifier.equals("it_eu_show_date")) {
 
-            List<String> itMonths = new ArrayList<>();
-
-            itMonths.addAll(langYaml.getStringList("it_it.months-names"));
-
-            List<String> itDays = new ArrayList<>();
-
-            itDays.addAll(langYaml.getStringList("it_it.days-names"));
-
             int dayName = Utils.CURRENT_DAY_NAME;
             return itDays.get(dayName) + " " + Utils.DAY + " " + itMonths.get(Utils.MONTH - 1) + " " + Utils.YEAR;
         }
 
         if (identifier.equals("en_us_show_date")) {
 
-            List<String> enMonths = new ArrayList<>();
-
-            enMonths.addAll(langYaml.getStringList("en_us.months-names"));
-
-            List<String> enDays = new ArrayList<>();
-
-            enDays.addAll(langYaml.getStringList("en_us.days-names"));
-
             int dayName = Utils.CURRENT_DAY_NAME;
             return enDays.get(dayName) + " " + Utils.DAY + " " + enMonths.get(Utils.MONTH - 1) + " " + Utils.YEAR;
 
+        }
+
+        if (identifier.equals("day")) {
+            return "" + Utils.DAY;
+        }
+
+        if (identifier.equals("day_us_name")) {
+            return itDays.get(Utils.CURRENT_DAY_NAME);
+        }
+
+        if (identifier.equals("day_it_name")) {
+            return "" + enDays.get(Utils.CURRENT_DAY_NAME);
+        }
+
+        if (identifier.equals("month_number")) {
+            return "" + Utils.MONTH;
+        }
+
+        if (identifier.equals("month_us_name")) {
+            return "" + enMonths.get(Utils.MONTH);
+        }
+
+        if (identifier.equals("month_it_name")) {
+            return "" + itMonths.get(Utils.MONTH);
+        }
+
+        if (identifier.equals("year")) {
+            return "" + Utils.YEAR;
         }
 
         return null;

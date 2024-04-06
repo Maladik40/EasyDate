@@ -1,9 +1,6 @@
 package me.maladik.easydate;
 
-import me.maladik.easydate.Commands.ConfigReloadCommand;
-import me.maladik.easydate.Commands.GetDateCommand;
-import me.maladik.easydate.Commands.SetDateCommand;
-import me.maladik.easydate.Commands.TickCommand;
+import me.maladik.easydate.Commands.MainCommand;
 import me.maladik.easydate.Placeholders.DateAPI;
 import me.maladik.easydate.SettingsFiles.LanguageFile;
 import org.bukkit.Bukkit;
@@ -38,10 +35,7 @@ public class EasyDate extends JavaPlugin {
             DayCycleRunnable dayCycleRunnable = new DayCycleRunnable(this);
             dayCycleRunnable.runTaskTimerAsynchronously(this, 1L, 5L);
 
-            getCommand("ticks").setExecutor(new TickCommand());
-            getCommand("date").setExecutor(new GetDateCommand());
-            getCommand("setdate").setExecutor(new SetDateCommand());
-            getCommand("easydate").setExecutor(new ConfigReloadCommand());
+            getCommand("easydate").setExecutor(new MainCommand());
 
 
         } else {
